@@ -22,17 +22,17 @@ jobs:
       env: 
         DOCKER_USER: ${{ secrets.DOCKER_USER }}
         DOCKER_PASSWORD: ${{  secrets.DOCKER_PASSWORD }}
-      run: 
+      run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
         
     - name: Build Docker Image 
-      run:
+      run: |
         docker build -t andresdevjki/docker-graphql:0.0.2 .
-        docker build -t andresdevjki/docker-graphql:lastest .
+        docker build -t andresdevjki/docker-graphql:latest .
         
     - name: Push Docker Image
-      run: 
+      run: |
         docker push andresdevjki/docker-graphql:0.0.2
-        docker push andresdevjki/docker-graphql:lastest
+        docker push andresdevjki/docker-graphql:latest
 #     - name: Build the Docker image
 #       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
